@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="red">#C11212</color>
+    <color name="grey">#777070</color>
+    <color name="subcontinent">#C14053</color>
+    <color name="splash">#F38D6D</color>
+    <color name="navBar">#D66C4A</color>
+    <color name="background_app">#EEAA95</color>
+</resources>
