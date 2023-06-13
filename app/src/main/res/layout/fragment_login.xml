@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/background_app"
+    android:background="@drawable/login"
     tools:context=".ui.view.login.fragment.LoginFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -50,6 +50,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etEmail" />
 
+        <EditText
+            android:id="@+id/etIp"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:autofillHints="emailAddress"
+            android:hint="IP servidor"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etPass" />
+
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="150dp"
@@ -59,7 +73,7 @@
             android:text="@string/login_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etPass" />
+            app:layout_constraintTop_toBottomOf="@+id/etIp" />
 
         <Button
             android:id="@+id/btnSignin"

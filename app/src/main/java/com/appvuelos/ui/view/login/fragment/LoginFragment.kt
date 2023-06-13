@@ -6,9 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.appvuelos.R
+import com.appvuelos.data.Conexion
 import com.appvuelos.databinding.FragmentLoginBinding
 import com.appvuelos.ui.view.login.MainActivity
 import com.appvuelos.ui.view.login.MainActivity.Companion.conn
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
@@ -22,7 +26,13 @@ class LoginFragment : Fragment() {
 
     private fun initComponents() {
         binding.btnLogin.setOnClickListener {
-            conn.peticionLogin(binding.etEmail.text.toString(),binding.etPass.text.toString())
+            val act = activity as MainActivity
+            CoroutineScope(Dispatchers.IO).launch {
+                conn = Conexion(act, binding.etEmail.text.toString(), binding.etPass.text.toString(), false, binding.etIp.text.toString())
+                conn.run()
+
+            }
+
         }
 
         binding.btnSignin.setOnClickListener {

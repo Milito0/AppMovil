@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/homeNoFlightFragment">
 
     <fragment
         android:id="@+id/historialFragment"
@@ -11,13 +11,23 @@
         android:label="fragment_historial"
         tools:layout="@layout/fragment_historial" />
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.appvuelos.ui.view.nav.home.fragment.HomeFragment"
+        android:id="@+id/homeNoFlightFragment"
+        android:name="com.appvuelos.ui.view.nav.home.fragment.HomeNoActiveFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home_no_active" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.appvuelos.ui.view.nav.profile.fragment.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/homeActiveFlightFragment"
+        android:name="com.appvuelos.ui.view.nav.home.fragment.HomeActiveFlightFragment"
+        android:label="fragment_home_active_flight"
+        tools:layout="@layout/fragment_home_active_flight" />
+    <fragment
+        android:id="@+id/noHistorialFragment"
+        android:name="com.appvuelos.ui.view.nav.historial.fragment.NoHistorialFragment"
+        android:label="fragment_no_historial"
+        tools:layout="@layout/fragment_no_historial" />
 </navigation>
