@@ -19,7 +19,7 @@ class NavActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private var myBundle: Bundle = Bundle()
 
-    companion object{
+    companion object {
         var bool = false
     }
 
@@ -27,7 +27,6 @@ class NavActivity : AppCompatActivity() {
         val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
         Log.i("qr", data.toString())
         if (result != null) {
-            Log.i("milito", result.contents.toString())
             if (result.contents == null) {
                 Toast.makeText(this, "Error de lectura..", Toast.LENGTH_SHORT).show()
             } else {
@@ -39,6 +38,7 @@ class NavActivity : AppCompatActivity() {
 
 
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityNavBinding.inflate(layoutInflater)
@@ -59,10 +59,12 @@ class NavActivity : AppCompatActivity() {
                     it.isChecked = true
                     conn.peticionVueloActivo()
                 }
+
                 binding.navBar.menu.getItem(1).itemId -> {
                     it.isChecked = true
                     conn.peticionHistorial(correoUser)
                 }
+
                 binding.navBar.menu.getItem(2).itemId -> {
                     it.isChecked = true
                     conn.peticionInfo(correoUser)
@@ -72,7 +74,7 @@ class NavActivity : AppCompatActivity() {
         }
     }
 
-    fun navigateToProfile(nombre:String, apellidos: String, telefono:String, direccion: String){
+    fun navigateToProfile(nombre: String, apellidos: String, telefono: String, direccion: String) {
         val myBundle = Bundle()
         myBundle.putString("NOMBRE", nombre)
         myBundle.putString("APELLIDOS", apellidos)
@@ -81,24 +83,82 @@ class NavActivity : AppCompatActivity() {
         navController.navigate(R.id.profileFragment, myBundle)
     }
 
-    fun navigateToHistorial(list: java.util.ArrayList<String>){
+    fun navigateToHistorial(list: java.util.ArrayList<String>) {
         val myBundle = Bundle()
-        myBundle.putStringArrayList("LIST",list)
+        myBundle.putStringArrayList("LIST", list)
         navController.navigate(R.id.historialFragment, myBundle)
     }
 
-    fun navigateToNoHistorial(){
+    fun navigateToNoHistorial() {
         navController.navigate(R.id.noHistorialFragment)
     }
 
-    fun navigateToHome(){
+    fun navigateToHome() {
 
-        if(!bool){
+        if (!bool) {
             navController.navigate(R.id.homeNoFlightFragment)
         } else {
             myBundle.putStringArray("LIST", intent.extras!!.getStringArray("LISTA"))
             navController.navigate(R.id.homeActiveFlightFragment, myBundle)
         }
+    }
+
+    fun navigateToHomeNoFlight(){
+        navController.navigate(R.id.homeNoFlightFragment)
+    }
+
+    fun navigateToHomeFlight(
+        apellidos: String,
+        nombre: String,
+        bookingReference: String,
+        siglasSalida: String,
+        siglasLlegada: String,
+        codeNombre: String,
+        nVuelo: String,
+        fechaSalida: String,
+        fechaAterrizaje: String,
+        asiento: String,
+        sequenceNumber: String,
+        passengerStatus: String,
+        sizeField: String,
+        version: String,
+        checkinSource: String,
+        variableField: String,
+        internationalVerification: String,
+        frequentFlyerData: String,
+        airlineData: String,
+        ciudadSalida: String,
+        ciudadDestino: String,
+        nombreCompany: String
+    ) {
+        val myBundle = Bundle()
+        val lista = arrayOf(
+            apellidos,
+            nombre,
+            bookingReference,
+            siglasSalida,
+            siglasLlegada,
+            codeNombre,
+            nVuelo,
+            fechaSalida,
+            fechaAterrizaje,
+            asiento,
+            sequenceNumber,
+            passengerStatus,
+            sizeField,
+            version,
+            checkinSource,
+            variableField,
+            internationalVerification,
+            frequentFlyerData,
+            airlineData,
+            ciudadSalida,
+            ciudadDestino,
+            nombreCompany
+        )
+
+        myBundle.putStringArray("LIST", lista)
+        navController.navigate(R.id.homeActiveFlightFragment, myBundle)
     }
 
     fun navigateToLogin() {

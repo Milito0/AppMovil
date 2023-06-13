@@ -26,6 +26,7 @@ class Conexion(activity: MainActivity, correo1: String, pass1: String, bool: Boo
     lateinit var entrada: Scanner
     lateinit var linea: String
     var desconectar = false
+    var x = 0
 
 
     override fun run() {
@@ -102,7 +103,13 @@ class Conexion(activity: MainActivity, correo1: String, pass1: String, bool: Boo
 
                 "NOFLG" -> {
                     CoroutineScope(Dispatchers.Main).launch {
-                        act.navigateToHomeNoFlight()
+                        if(x==0){
+                            act.navigateToHomeNoFlight()
+                            x=1
+                        } else {
+                            act2.navigateToHomeNoFlight()
+                        }
+
                     }
                 }
 
@@ -118,30 +125,59 @@ class Conexion(activity: MainActivity, correo1: String, pass1: String, bool: Boo
 
                 "FLG" -> {
                     CoroutineScope(Dispatchers.Main).launch {
-                        act.navigateToHomeFlight(
-                            lineas[1],
-                            lineas[2],
-                            lineas[3],
-                            lineas[4],
-                            lineas[5],
-                            lineas[6],
-                            lineas[7],
-                            lineas[8],
-                            lineas[9],
-                            lineas[10],
-                            lineas[11],
-                            lineas[12],
-                            lineas[13],
-                            lineas[14],
-                            lineas[15],
-                            lineas[16],
-                            lineas[17],
-                            lineas[18],
-                            lineas[19],
-                            lineas[20],
-                            lineas[21],
-                            lineas[22]
-                        )
+                        if(x==0){
+                            act.navigateToHomeFlight(
+                                lineas[1],
+                                lineas[2],
+                                lineas[3],
+                                lineas[4],
+                                lineas[5],
+                                lineas[6],
+                                lineas[7],
+                                lineas[8],
+                                lineas[9],
+                                lineas[10],
+                                lineas[11],
+                                lineas[12],
+                                lineas[13],
+                                lineas[14],
+                                lineas[15],
+                                lineas[16],
+                                lineas[17],
+                                lineas[18],
+                                lineas[19],
+                                lineas[20],
+                                lineas[21],
+                                lineas[22]
+                            )
+                            x = 1
+                        } else {
+                            act2.navigateToHomeFlight(
+                                lineas[1],
+                                lineas[2],
+                                lineas[3],
+                                lineas[4],
+                                lineas[5],
+                                lineas[6],
+                                lineas[7],
+                                lineas[8],
+                                lineas[9],
+                                lineas[10],
+                                lineas[11],
+                                lineas[12],
+                                lineas[13],
+                                lineas[14],
+                                lineas[15],
+                                lineas[16],
+                                lineas[17],
+                                lineas[18],
+                                lineas[19],
+                                lineas[20],
+                                lineas[21],
+                                lineas[22]
+                            )
+                        }
+
                     }
                 }
             }
